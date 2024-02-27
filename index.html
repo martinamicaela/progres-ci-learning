@@ -1,0 +1,43 @@
+<p>useful websites</p>
+<a href="https://github.com/martinamicaela/progres-ci-learning"></a>
+<a href="https://medium.com/@itayperry91/get-started-with-postgresql-on-windows-a-juniors-life-4adfa6dd10e"></a>
+<a href="https://github.com/ASproson/psql-windows-gitbash/blob/main/How%20to%20use%20PSQL%20with%20Windows%20%26%20Git%20Bash.md"></a>
+<a href="https://bobbyhadz.com/blog/psql-is-not-recognized-as-internal-or-external-command"></a>
+<a href=""></a>
+<br>
+<p>You need to run set_pg every time you restart your workspace
+    Type \q and then press ENTER to quit psql.   PostgreSQL 11, the keywords "quit" and "exit" in the PostgreSQL 
+    command-line interface have been included to help make it easier to leave the command-line tool</p>
+<p>Next, we need to start the Postgres command-line interface, or shell, in order to get the Chinook
+    database installed, and the data populated.
+    To launch the Postgres CLI, we can simply type "psql" and hit enter.</p>
+    <h3>To launch the Postgres CLI, we can simply type "psql" and hit enter.
+        To view, or list, any databases in our environment, we can type \l.
+        By default, the Postgres CLI comes with 3 databases out of the box; 'postgres', 'template0', and 'template1'.
+        Instead of using any of these default databases, let's create a new database for our Chinook lessons.
+        CREATE DATABASE chinook; Don't forget the semicolon at the end of the command,
+        which is the standard way to separate each SQL statement, since you can theoretically
+        combine multiple commands in a single entry.
+        If you've hit enter without adding the semicolon, it will assume you're wanting to add additional
+        commands, so just add your semicolon now, and hit enter.
+        We now have a fourth database, called Chinook, which is currently empty.
+        If we needed to switch between databases, we can simply type \c followed by the name
+        of the database we want to switch over to.
+        \c postgres - now we're on the default postgres database.
+        \c chinook - and now we're connected to our new database.
+        The \c stands for 'connect' in case you're wondering, telling it which database to connect to.
+        Finally, while we're connected to our new chinook database, we need to initialize or
+        install the downloaded sample Chinook PostgreSQL database.
+        \i Chinook_PostgreSql.sql The \i generally means include, integrate, install, or initialize.
+        Essentially, this file is an SQL script that contains all of the instructions needed to
+        create tables, and populate our database with information so that we have useful data for practice.
+        We don't need to fully understand what it's doing right now; it's just so you know that
+        it's giving us data to work with and test.
+        We would encourage you later to go back and read through the script a bit, and have a
+        look at some of the commands involved.
+        This will take about 5 minutes to build our database tables, so feel free to grab yourself
+        a fresh cup of tea, or stand up and stretch a bit away from the keyboard.
+        In the next lesson, we'll check to ensure that our data was populated correctly, and
+        see how to query the database using some basic commands.
+        </h3>
+    
