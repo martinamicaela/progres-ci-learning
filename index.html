@@ -125,8 +125,26 @@ file from the package, and attempt to execute the wrong one.
         the .connect() method.</li>
     <li>assign that to a variable of 'connection'</li>
     <li>We are only specifying the name of our database, "chinook", in double-quotes, but you could
-        include additional connection values such as host, username, password, and so on.</li>
+        include additional connection values such as host, username, password, and so on.Since we are already working locally, and haven't set up any credentials, the only thing
+        that we need to worry about is the actual database name.</li>
+    <li>Cursor Object.
+        A cursor object is another way of saying a 'set' or 'list', similar to an 'array' in JavaScript.
+        Essentially, anything that we query from the database will become part of this cursor object,
+        and to read that data, we should iterate over the cursor using a for-loop, as an example.</li>
 </ul>
+<p>Before we start to query the database, we need to set up a way for our data to be retrieved,
+    or fetched, from the cursor.  'results' since it'll fetch any result that gets queried.if we need to query multiple records from our database, we should use the
+    .fetchall() method.
+    Otherwise, if we're intentionally looking for one particular record, we could use the
+    .fetchone() method, which I will comment-out for now using the CTRL+/ command.once our results have been fetched, we need to end the connection to the database,
+    so the connection isn't always persistent.</p>
+    
+
+<p>PsycoPG2 commands are actually quite similar to native SQL commands, with one little twist;
+    the precise use of quotations.
+    It's extremely important to note that we absolutely must use single-quotes to wrap our query,
+    and double-quotes to specify particular values.</p>
+    
 
 </body>
 </html>
