@@ -1,17 +1,27 @@
-<p>useful websites</p>
-<a href="https://github.com/martinamicaela/progres-ci-learning"></a>
-<a href="https://medium.com/@itayperry91/get-started-with-postgresql-on-windows-a-juniors-life-4adfa6dd10e"></a>
-<a href="https://github.com/ASproson/psql-windows-gitbash/blob/main/How%20to%20use%20PSQL%20with%20Windows%20%26%20Git%20Bash.md"></a>
-<a href="https://bobbyhadz.com/blog/psql-is-not-recognized-as-internal-or-external-command"></a>
-<a href=""></a>
-<br>
-<p>You need to run set_pg every time you restart your workspace
-    Type \q and then press ENTER to quit psql.   PostgreSQL 11, the keywords "quit" and "exit" in the PostgreSQL 
-    command-line interface have been included to help make it easier to leave the command-line tool</p>
-<p>Next, we need to start the Postgres command-line interface, or shell, in order to get the Chinook
-    database installed, and the data populated.
-    To launch the Postgres CLI, we can simply type "psql" and hit enter.</p>
-    <h3>To launch the Postgres CLI, we can simply type "psql" and hit enter.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    hey hey 
+    <p>useful websites</p>
+    <a href="https://github.com/martinamicaela/progres-ci-learning">git </a>
+    <a href="https://medium.com/@itayperry91/get-started-with-postgresql-on-windows-a-juniors-life-4adfa6dd10e">link1</a>
+    <a href="https://github.com/ASproson/psql-windows-gitbash/blob/main/How%20to%20use%20PSQL%20with%20Windows%20%26%20Git%20Bash.md"></a>
+    <a href="https://bobbyhadz.com/blog/psql-is-not-recognized-as-internal-or-external-command">link2</a>
+    
+    <p>You need to run set_pg every time you restart your workspace
+        Type \q and then press ENTER to quit psql.   PostgreSQL 11, the keywords "quit" and "exit" in the PostgreSQL
+        command-line interface have been included to help make it easier to leave the command-line tool</p>
+    <br>   
+    
+    <p>Next, we need to start the Postgres command-line interface, or shell, in order to get the Chinook
+        database installed, and the data populated.</p>
+    <br>
+    <p>To launch the Postgres CLI, we can simply type "psql" and hit enter.
         To view, or list, any databases in our environment, we can type \l.
         By default, the Postgres CLI comes with 3 databases out of the box; 'postgres', 'template0', and 'template1'.
         Instead of using any of these default databases, let's create a new database for our Chinook lessons.
@@ -39,5 +49,64 @@
         a fresh cup of tea, or stand up and stretch a bit away from the keyboard.
         In the next lesson, we'll check to ensure that our data was populated correctly, and
         see how to query the database using some basic commands.
-        </h3>
-    
+    </p>
+    <p>'psql -d chinook' . This will start the server, and tell it that
+        the database we want to connect to is the one called "chinook", as declared by using
+        the -d flag to specify a database name.Next, we need to confirm that all tables and data were successfully added to the database.
+        '\dt' . This will allow us to display tables on our database.
+
+    </p>
+
+    <p>First, let's start by retrieving all data from the Artist table.
+        Technically you don't need to write the SQL commands in capital letters, but it's standard
+        practice to distinguish between the different pieces of your query string.
+        The asterisk is a common programming method to signify a wildcard, which essentially means
+        to select anything and everything.
+        Also note, I've used double-quotes intentionally, because using single-quotes will throw a 'syntax error',
+        Finally, the command must end with a semicolon, to specify that this is the end of our query.
+        If you omit the semicolon and hit enter, nothing happens, but in reality, it's waiting for
+        you to finish building your query, which can span multiple lines.
+        Just add the missing semicolon and hit enter, and your query should still work fine.
+   
+        SELECT * FROM "artist";
+</p>
+<br>
+<p>In order to exit this query search, simply type the letter "q" and hit enter, but not
+    to be confused with \q which will quit the Postgres CLI. <strong>As you may have noticed, I've used double-quotes again, except when it comes to the specific
+        value I'd like to search for, which must be in single-quotes.This is to distinguish between the various table and column names, versus the specific
+        context or value I need to find.</strong>
+</p>
+<p>chinook=# SELECT *FROM "artist";
+    chinook=# SELECT "name" FROM "artist";
+    chinook=# SELECT * FROM "artist" WHERE "name" = 'Queen';
+artist_id | name  
+-----------+-------
+51 | Queen
+(1 row)
+
+
+chinook=# SELECT * FROM "artist" WHERE "artist_id" = 66;
+Since 51 is a primary key and integer, we don't need the single-quotes, but it will
+still work if you include them.
+</p>
+<p>chinook=# SELECT * FROM "album" WHERE "artist_id"= 51;
+    album_id |       title       | artist_id
+   ----------+-------------------+-----------
+          36 | Greatest Hits II  |        51
+         185 | Greatest Hits I   |        51
+         186 | News Of The World |        51
+   (3 rows)
+   This link or connection, referencing the primary key from another table, is known as a foreign key,
+   and demonstrates that these tables are related, hence the name, relational database.
+</p>
+<br>
+<p> SELECT * FROM "track" WHERE "composer" = 'Queen';
+    You can see that only 9 tracks are listed, all of which belong to the "Greatest Hits 2" album,
+    as specified by the foreign key of 36 under AlbumId, that we saw from the last query.
+    The other columns here contain additional data about those tracks, some of which have
+    foreign keys related to different tables on our database.
+    In a real-world scenario, you should probably consider making the Composer column actually
+    be the ArtistId foreign key, to keep with the relational database schema.</p>
+
+</body>
+</html>
