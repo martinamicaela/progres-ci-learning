@@ -38,17 +38,14 @@
         The \c stands for 'connect' in case you're wondering, telling it which database to connect to.
         Finally, while we're connected to our new chinook database, we need to initialize or
         install the downloaded sample Chinook PostgreSQL database.
-        \i Chinook_PostgreSql.sql The \i generally means include, integrate, install, or initialize.
+       <strong> \i Chinook_PostgreSql.sql </strong>The \i generally means include, integrate, install, or initialize.
         Essentially, this file is an SQL script that contains all of the instructions needed to
         create tables, and populate our database with information so that we have useful data for practice.
         We don't need to fully understand what it's doing right now; it's just so you know that
         it's giving us data to work with and test.
         We would encourage you later to go back and read through the script a bit, and have a
         look at some of the commands involved.
-        This will take about 5 minutes to build our database tables, so feel free to grab yourself
-        a fresh cup of tea, or stand up and stretch a bit away from the keyboard.
-        In the next lesson, we'll check to ensure that our data was populated correctly, and
-        see how to query the database using some basic commands.
+        This will take about 5 minutes to build our database tables.
     </p>
     <p>'psql -d chinook' . This will start the server, and tell it that
         the database we want to connect to is the one called "chinook", as declared by using
@@ -107,6 +104,29 @@ still work if you include them.
     foreign keys related to different tables on our database.
     In a real-world scenario, you should probably consider making the Composer column actually
     be the ArtistId foreign key, to keep with the relational database schema.</p>
+    <br>
+    <p>PsycoPG2 is by far the most popular, and stable library for connecting Python to Postgres.
+        It's used by pretty much most Python and Postgres frameworks globally, including Django, which Not only does it support Python's primary versions, but it's also actively maintained
+        and widely used in the development world when working with back-end databases.</p>
+    <p>Before we can start using this adapter, we need to install it into our workspace.
+        pip3 install psycopg2
+        Once that's installed, we're going to use its built-in API to access our Chinook database, Once that's installed, we're going to use its built-in API to access our Chinook database,
+        and we'll do that by using a Python file, not the CLI this time.</p>
+    <p>Let's create a new Python file using the <strong> "touch" command, and call it 'sql-psycopg2.py',</strong>
+        <br>
+        It's important to note that you shouldn't call your file psycopg2.py, as this is a default
+file already used by the package, and will cause your queries to always fail.
+This is due to the fact that Python will confuse your custom file by the same name, as the
+file from the package, and attempt to execute the wrong one.
+    </p>
+    <ul>
+    <li>'import psycopg2'</li>
+    <li>psycopg2 connect to our Postgres database called Chinook, using
+        the .connect() method.</li>
+    <li>assign that to a variable of 'connection'</li>
+    <li>We are only specifying the name of our database, "chinook", in double-quotes, but you could
+        include additional connection values such as host, username, password, and so on.</li>
+</ul>
 
 </body>
 </html>
