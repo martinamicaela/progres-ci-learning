@@ -144,7 +144,80 @@ file from the package, and attempt to execute the wrong one.
     the precise use of quotations.
     It's extremely important to note that we absolutely must use single-quotes to wrap our query,
     and double-quotes to specify particular values.</p>
+<p>Let's save the file, then run it in the Terminal by hitting the Up arrow key to replay our</p>
+
+<p>Query #2 was simply retrieving only the 'Name' column from the Artist table.
+   Query #3, we're searching for only "Queen" from the Artist table.
+   Since we need to specify a particular record, unfortunately any combination of single or
+
+   double quotes just won't work.We need to use a Python string placeholder, and then define the desired string within a list.
+You can technically have multiple placeholders, depending on how detailed your query needs
+to be, and each placeholder would be added to this list.
+Technically, since we know there should only be one result, we could use the .fetchone() method.
+This would print each column individually, instead of part of a tuple of column results.
+</p>
+<p>Query #4, if you recall, the ArtistId of 51,primary key of 51</p>
+<p>For Query #5, ArtistId from the Album table, not from Artist.</p>
+<p>Query #6, we will look on the Track table, for all tracks where the composer is Queen.</p>
+<h3>psycopg2, the most popular library when connecting Python
+    to Postgres, ORM</h3>
+<p>ORM stands for, what it does, and start the installation
+    process to prepare for the next few lessons.
+    The letters ORM stand for "object-relational mapping".
+    An ORM is essentially a way for you to query and manipulate data from your database, using
+    objects.</p>
+<br>
+<p>R - Relational; this is the database piece of the puzzle, a relational database, which
+    is Postgres in our case. M - Mapping; finally, this is effectively
+    the bridge between your Python object, and your tables within the database, mapping the
+    two together.
+    The most popular ORM libraries when working with Python are the Django ORM, and SQLAlchemy,
+    both of which work well with Postgres. Django includes its own ORM, which is extremely
+    popular, but cannot be decoupled from the Django framework to be used on its own.
+    SQLAlchemy is built to be framework-agnostic, and so can therefore be used on its own.</p>
+
+<p>SQLAlchemy include having cleaner code, the logic is
+    simple, and your code is more secure than using raw SQL commands.
+    In fact, the SQLAlchemy library comes with three different layers of abstraction, meaning
+    you can choose the level of support necessary for your applications.
+    The lowest layer of abstraction is to simply use SQLAlchemy's engine component in order
+    to execute raw SQL, nothing too complex or fancy.
+    The middle layer of abstraction uses SQLAlchemy's Expression Language to build SQL statements
+    in a more Pythonic way, instead of relying purely on those raw strings.
+    The highest layer of abstraction uses SQLAlchemy's full ORM capabilities, allowing us to make
+    use of Python classes and objects, instead of using database tables and connections.</p>
+
+<p>Before we move on, let's quickly setup our workspace and install the SQLAlchemy package
+    for Python. pip3 install SQLAlchemy   pip3 install sqlalchemy==1.4.46</p>
+<p>middle layer of SQLAlchemy's abstraction layers,
+    which is the Expression Language.
+    This is a huge step-up from regular SQL commands, and uses more Python logic to query and manipulate
+    data from our database.
+    One of the most important differences here is that there is less concern about punctuation,
+    meaning you don't have to worry as much about the single vs double quotes.
+    Also, we get to use more Python methods, which are quite similar to functions, but associated
+    with classes and objects.Let's get started by creating a new file using the "touch" command called sql-expression.py in the Terminal.</p>
     
+    <p>is to import a few classes from
+        within the sqlalchemy module. from sqlalchemy import (create_engine, Table,
+        Column, Float, ForeignKey, Integer, String, MetaData)
+        Next, we need to link our Python file to our Chinook database, and that's where the 'create_engine'
+        component comes into play.</p>
+    <p>I'm going to assign this to a variable of "db" to represent our database, and using
+        create_engine, we can tell it to point to our local Chinook database within our Postgres server.
+        The fact that we have 3 slashes here, signifies that our database is hosted locally within
+        our workspace environment.After our engine is created, and connected to our database, we need to use the MetaData
+        class, which we can save to a variable name of 'meta'.
+        The MetaData class will contain a collection of our table objects, and the associated data
+        within those objects.</p>
+    <p>This saves our connection to the database into a variable called 'connection'.Before we start to query the database, we need to construct our tables, so that Python
+        knows the schema that we're working with.data models,</p>
+    <br>
+    <p>Our first table class, or model, will be for the Artist table, which I'll assign to the variable of 'artist_table'.
+        Using the Table import, we need to specify the name of our table, and provide the meta schema.</p>
+    <p>Back within our file, the format when defining columns, is the column name, followed by the
+        type of data presented, and then any other optional fields after that.</p>
+    <p>variable called 'select_query',Using the Expression Language, all we need to do is apply the .select() method onto our table.</p>
 
 </body>
 </html>
